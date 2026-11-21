@@ -1,0 +1,65 @@
+<!doctype html><html lang="zh-Hant-TW"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="data:,"><title>協紀擇日</title>
+<meta name="description" content="以天干地支、陰陽五行為本的擇日選時：萬年曆日頁、月曆、吉時表、區間擇吉。地方平時、當地節氣與農曆。">
+<link rel="stylesheet" href="style.css">
+<script src="https://regulusab.github.io/nav/nav.js" defer></script>
+</head><body>
+<header><h1>協紀擇日</h1><p>天干地支・陰陽五行・擇日選時</p></header>
+<div id="bar" class="bar">
+  <nav id="tabs" class="tabs" aria-label="功能">
+    <button data-tab="day" class="on">日頁・吉時</button><button data-tab="month">月曆</button><button data-tab="search">擇吉搜尋</button><button data-tab="saved">存檔</button><button data-tab="lib">說明文庫</button>
+  </nav>
+  <div class="settings">
+    <label>地點 <select id="place"></select></label>
+    <label>經度 <input id="lon" type="number" step="0.01" min="-180" max="180" style="width:6.5em"></label>
+    <label>子時換日 <select id="zi"><option value="0">0:00（預設）</option><option value="23">23:00</option></select></label>
+    <label>模式 <select id="mode"><option value="basic">一般</option><option value="pro">專業</option></select></label>
+  </div>
+</div>
+<main>
+<section id="tab-day" class="tab">
+  <div class="card form">
+    <label>日期（地方平時）<input id="dayDate" type="date"></label>
+    <button id="dayPrev">◀ 前一日</button><button id="dayToday">今天</button><button id="dayNext">後一日 ▶</button>
+  </div>
+  <div id="dayOut"></div>
+</section>
+<section id="tab-month" class="tab" hidden>
+  <div class="card form">
+    <label>月份 <input id="monthYm" type="month"></label>
+    <button id="monPrev">◀</button><button id="monNext">▶</button>
+    <label>依事項標示 <select id="monEvent"><option value="">（不標示）</option></select></label>
+  </div>
+  <div id="monthOut"></div>
+</section>
+<section id="tab-search" class="tab" hidden>
+  <div class="card">
+    <h2>區間擇吉</h2>
+    <div class="form">
+      <label>事項 <select id="ev"></select></label>
+      <label>起 <input id="from" type="date"></label>
+      <label>迄 <input id="to" type="date"></label>
+      <label class="chk"><input id="showEx" type="checkbox"> 也列出不取的日子</label>
+    </div>
+    <p class="sub" id="evNote"></p>
+    <h3>相關人（生日以出生地地方平時輸入；可留空）</h3>
+    <div id="people"></div>
+    <div class="form" style="margin-top:8px"><button id="demo">填入虛構示範命例</button><button id="go" class="btn">開始擇吉</button></div>
+  </div>
+  <div id="searchOut"></div>
+</section>
+<section id="tab-saved" class="tab" hidden>
+  <div class="card">
+    <h2>存檔</h2>
+    <p class="sub">存檔只放在這台裝置的瀏覽器（localStorage），不會上傳。</p>
+    <div class="form"><input id="saveName" placeholder="存檔名稱"><button id="saveNow" class="btn">存下目前的擇吉設定</button>
+      <button id="exportJson">匯出 JSON</button><label class="btnlike">匯入 JSON<input id="importJson" type="file" accept="application/json" hidden></label></div>
+    <div id="savedOut"></div>
+  </div>
+</section>
+<section id="tab-lib" class="tab" hidden><div id="libOut"></div></section>
+</main>
+<footer>協紀擇日・純前端靜態網站，不收集資料、無廣告。結果為傳統擇日法的整理，以吉凶等級與理由呈現；不做健康、壽命判斷。示範命例皆為虛構。</footer>
+<script src="lunar.js"></script><script src="lunation.js"></script><script src="local_lunar.js"></script>
+<script src="cal.js"></script><script src="rules.js"></script><script src="engine.js"></script><script src="search.js"></script><script src="places.js"></script><script src="app.js"></script>
+</body></html>
